@@ -464,7 +464,8 @@ namespace pl {
         }
 
         /// store values to array
-        Scalar * store(I32 key, Scalar* v);
+        template <class T>
+        Scalar * store(I32 key, T v);
         /// Clears an array, making it empty.
         void clear() {
             av_clear((AV*)this->val);
@@ -629,7 +630,9 @@ namespace pl {
         SV* v = av_shift((AV*)this->val);
         return Scalar::create(v);
     }
-    Scalar * Array::store(I32 key, Scalar* _v) {
+    template <class T>
+    Scalar * Array::store(I32 key, T arg) {
+        Scalar * _v = Scalar::to_perl(arg);
         _v->refcnt_inc();
         SV** v = av_store((AV*)this->val, key, _v->val);
         if (v) {
@@ -646,17 +649,18 @@ namespace pl {
      */
     class Package {
     public:
-        Package(std::string _pkg) {
-            pkg = _pkg;
+        Package(std::string _pkg, const char *_file) {
+            this->pkg = _pkg;
+            this->file = _file;
             stash = gv_stashpvn(pkg.c_str(), pkg.length(), TRUE);
         }
         /**
          * install xsub
          * @see newXS
          */
-        void add_method(const char*name, XSUBADDR_t func, const char *file) {
+        void add_method(const char*name, XSUBADDR_t func) {
             char * buf = const_cast<char*>( (pkg + "::" + name).c_str() );
-            newXS(buf, func, const_cast<char*>(file));
+            newXS(buf, func, const_cast<char*>(this->file));
         }
         /**
          * add new const sub
@@ -678,6 +682,7 @@ namespace pl {
     private:
         std::string pkg;
         HV * stash;
+        const char * file;
     };
 
     /**

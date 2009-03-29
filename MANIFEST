@@ -38,6 +38,8 @@ html/classpl_1_1Hash.png
 html/classpl_1_1Int-members.html
 html/classpl_1_1Int.html
 html/classpl_1_1Int.png
+html/classpl_1_1IO-members.html
+html/classpl_1_1IO.html
 html/classpl_1_1Package-members.html
 html/classpl_1_1Package.html
 html/classpl_1_1Perl-members.html
@@ -67,8 +69,11 @@ html/functions.html
 html/functions_func.html
 html/hierarchy.html
 html/index.html
+html/namespacemembers.html
+html/namespacemembers_vars.html
 html/namespacepl.html
 html/namespaces.html
+html/ppport_8h-source.html
 html/tab_b.gif
 html/tab_l.gif
 html/tab_r.gif
@@ -83,6 +88,7 @@ inc/Module/Install/Fetch.pm
 inc/Module/Install/Include.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
+inc/Module/Install/Repository.pm
 inc/Module/Install/Share.pm
 inc/Module/Install/TestBase.pm
 inc/Module/Install/Win32.pm
