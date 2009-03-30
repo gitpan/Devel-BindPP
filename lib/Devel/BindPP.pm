@@ -2,7 +2,7 @@ package Devel::BindPP;
 use strict;
 use warnings;
 use 5.008005;
-our $VERSION = '0.03_02';
+our $VERSION = '0.03_03';
 use File::ShareDir ':ALL';
 use File::Copy;
 use XSLoader;
@@ -98,6 +98,10 @@ github.com:tokuhirom/devel-bindpp.git
 =head1 AUTHOR
 
 Tokuhiro Matsuno E<lt>tokuhirom ah! gmail.comE<gt>
+
+=head1 THANKS TO
+
+mattn++ # win32 port
 
 =head1 SEE ALSO
 
