@@ -28,6 +28,8 @@ sub _find_repo {
             my $git_url = $1;
             $git_url =~ s![\w\-]+\@([^:]+):!git://$1/!;
             return $git_url;
+        } elsif (`git svn info` =~ /URL: (.*)$/m) {
+            return $1;
         }
     } elsif (-e ".svn") {
         if (`svn info` =~ /URL: (.*)$/m) {
@@ -69,4 +71,4 @@ __END__
 
 =encoding utf-8
 
-#line 110
+#line 112

@@ -19,7 +19,7 @@ our @Overridable;
 my @Prepend_parent;
 my %Recognized_Att_Keys;
 
-our $VERSION = '6.48';
+our $VERSION = '6.50';
 
 # Emulate something resembling CVS $Revision$
 (our $Revision = $VERSION) =~ s{_}{};
@@ -1051,4 +1051,4 @@ sub selfdocument {
 
 __END__
 
-#line 2713
+#line 2719
